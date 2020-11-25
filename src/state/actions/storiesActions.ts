@@ -8,3 +8,12 @@ export const requestStories = () => ({
     },
   },
 });
+
+export const requestStory = (id: number) => ({
+  type: Actions.REQUEST_STORY,
+  payload: {
+    request: {
+      url: `/item/${id}.json`,
+    },
+  },
+});
