@@ -1,4 +1,4 @@
-import { storiesActionTypes as Actions } from '../actionsTypes';
+import {storiesActionTypes as Actions, SUFFIX_FAILURE, SUFFIX_SUCCESS} from '../actionsTypes';
 
 // export type StoryProps = {
 //   id: number;
@@ -30,23 +30,23 @@ const initialState: StoriesReducerType = {
 
 const storiesReducer = (
   state = initialState,
-  action: { type: Actions; payload: number[] },
+  action: { type: Actions; payload: {data?: unknown} },
 ) => {
   switch (action.type) {
-    case Actions.GET_STORIES:
+    case Actions.REQUEST_STORIES:
       return {
         ...state,
         loading: true,
       };
-    case Actions.GET_STORIES_FAILURE:
+    case `${Actions.REQUEST_STORIES}${SUFFIX_FAILURE}`:
       return {
         ...state,
         loading: false,
       };
-    case Actions.GET_STORIES_SUCCESS:
+    case `${Actions.REQUEST_STORIES}${SUFFIX_SUCCESS}`:
       return {
         ...state,
-        items: action.payload,
+        items: action?.payload?.data as number[],
         loading: false,
       };
     default:
