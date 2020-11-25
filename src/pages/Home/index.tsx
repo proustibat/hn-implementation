@@ -1,10 +1,12 @@
 import React, { useEffect } from 'react';
-import {useSelector, useDispatch, RootStateOrAny} from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import { makeStyles } from '@material-ui/core/styles';
 import { Box, Container, LinearProgress, Typography } from '@material-ui/core';
 import Skeleton from '@material-ui/lab/Skeleton';
-import { getStories } from '../../state/actions/storiesActions';
+import {requestStories} from '../../state/actions/storiesActions';
+import { StoriesReducerType } from '../../state/reducers/storiesReducer';
+import { RootReducersType } from '../../state/reducers';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -16,8 +18,11 @@ export const Home = () => {
   const { t } = useTranslation();
   const classes = useStyles();
   const dispatch = useDispatch();
-  const {items: stories, loading: isLoadingStories}: RootStateOrAny = useSelector<RootStateOrAny>(
-    ({ stories: { items, loading } }) => ({items, loading}),
+  const {
+    items: stories,
+    loading: isLoadingStories,
+  }: StoriesReducerType = useSelector(
+    ({ stories }: RootReducersType) => stories,
   );
 
   const renderLoading = () => (
@@ -30,7 +35,7 @@ export const Home = () => {
   );
 
   useEffect(() => {
-    dispatch(getStories());
+    dispatch(requestStories());
   }, [dispatch]);
 
   return (
@@ -43,7 +48,7 @@ export const Home = () => {
           {isLoadingStories ? (
             renderLoading()
           ) : (
-            <div>STORIES {stories.join(' ')}</div>
+            <div>{stories.length > 0 && stories.join(' ')}</div>
           )}
         </Box>
       </Container>
