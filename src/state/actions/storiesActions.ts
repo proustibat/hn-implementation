@@ -6,7 +6,7 @@ export enum SearchKind {
     NEW = 'new',
 };
 
-export const requestStories = (searchKind: SearchKind = SearchKind.TOP) => ({
+export const requestStories = (searchKind: SearchKind = SearchKind.NEW) => ({
   type: Actions.REQUEST_STORIES,
   payload: {
     request: {

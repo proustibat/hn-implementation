@@ -5,7 +5,7 @@ const Cralga: Theme = createMuiTheme({
   palette: {
     common: {
       black: 'rgb(40,40,40)',
-      white: 'rgba(202,202,202,0.5)',
+      white: 'rgba(202,202,202)',
     },
     background: {
       default: 'rgb(255,255,255)',

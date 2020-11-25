@@ -5,21 +5,29 @@ import {
 } from '../actionsTypes';
 import { AxiosResponse } from 'axios';
 
+export enum StoryKindType {
+  job = 'job',
+  story = 'story',
+  comment = 'comment',
+  poll = 'poll',
+  pollopt = 'pollopt',
+}
+
 export type StoryProps = {
   id: number;
   deleted?: boolean; //	true if the item is deleted.
-  type?: 'job' | 'story' | 'comment' | 'poll' | 'pollopt'; //	The type of item.
-  by?: string; //	The username of the item's author.
+  type?: StoryKindType; // The type of item.
+  by?: string; // The username of the item's author.
   time?: number; //	Creation date of the item, in Unix Time.
   text?: string; //	The comment, story or poll text. HTML.
-  dead?: boolean; //	true if the item is dead.
-  parent?: number; //	The comment's parent: either another comment or the relevant story.
+  dead?: boolean; // true if the item is dead.
+  parent?: number; // The comment's parent: either another comment or the relevant story.
   poll?: number; //	The pollopt's associated poll.
-  kids?: number[]; //	The ids of the item's comments, in ranked display order.
+  kids?: number[]; // The ids of the item's comments, in ranked display order.
   url?: string; //	The URL of the story.
-  score?: number; //	The story's score, or the votes for a pollopt.
-  title?: string; //	The title of the story, poll or job. HTML.
-  parts?: number[]; //	A list of related pollopts, in display order.
+  score?: number; // The story's score, or the votes for a pollopt.
+  title?: string; // The title of the story, poll or job. HTML.
+  parts?: number[]; // A list of related pollopts, in display order.
   descendants?: number; //	In the case of stories or polls, the total comment count.
   loading?: boolean;
   loaded?: boolean;
@@ -37,7 +45,7 @@ const initialState: StoriesReducerType = {
   loaded: false,
 };
 
-const LIMIT = 50;
+const LIMIT = 25;
 
 const storiesReducer = (
   state = initialState,
@@ -73,7 +81,7 @@ const storiesReducer = (
         loaded: true,
       };
     case Actions.REQUEST_STORY:
-      loadedItemId = action.payload?.request?.data?.id as number
+      loadedItemId = action.payload?.request?.data?.id as number;
       return {
         ...state,
         items: state.items.map(item => {
@@ -87,19 +95,19 @@ const storiesReducer = (
         }),
       };
     case `${Actions.REQUEST_STORY}${SUFFIX_FAILURE}`:
-        loadedItemId = action.payload?.request?.data?.id as number
-        return {
-            ...state,
-            items: state.items.map(item => {
-                return item.id === loadedItemId
-                    ? {
-                        ...item,
-                        loading: false,
-                        loaded: false,
-                    }
-                    : item;
-            }),
-        };
+      loadedItemId = action.payload?.request?.data?.id as number;
+      return {
+        ...state,
+        items: state.items.map(item => {
+          return item.id === loadedItemId
+            ? {
+                ...item,
+                loading: false,
+                loaded: false,
+              }
+            : item;
+        }),
+      };
     case `${Actions.REQUEST_STORY}${SUFFIX_SUCCESS}`:
       const loadedItem = action.payload.data as StoryProps;
       return {

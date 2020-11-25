@@ -3,10 +3,10 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import 'fontsource-roboto';
+import AppLoader from "./components/AppLoader";
 
-// TODO: replace loading app message with an animation
 ReactDOM.render(
-  <Suspense fallback={<div>loading app</div>}>
+  <Suspense fallback={<AppLoader />}>
     <React.StrictMode>
       <App />
     </React.StrictMode>
