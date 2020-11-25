@@ -15,8 +15,8 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## DEMO
 [![Live Demo Web App](https://img.shields.io/badge/Live%20Demo-%20Web%20App-brightgreen.svg)](https://hn-implementation.surge.sh)
-[![Live Demo Storybook](https://img.shields.io/badge/Live%20Demo-%20Storybook-FF4785.svg)](https://storybook.hn-implementation.surge.sh.surge.sh)
-[![Live Demo Coverage Report](https://img.shields.io/badge/Live%20Demo-%20Coverage-FFAE00.svg)](https://coverage.hn-implementation.surge.sh.surge.sh)
+[![Live Demo Storybook](https://img.shields.io/badge/Live%20Demo-%20Storybook-FF4785.svg)](https://storybook.hn-implementation.surge.sh)
+[![Live Demo Coverage Report](https://img.shields.io/badge/Live%20Demo-%20Coverage-FFAE00.svg)](https://coverage.hn-implementation.surge.sh)
 
 ## REQUIREMENTS
 Be sure [Node](https://nodejs.org/) and [NPM](https://www.npmjs.com/) are installed.
@@ -125,7 +125,7 @@ The `main` workflow runs 6 jobs:
 
 | *Main workflow on the main branch*                             | *Main workflow on a pull request*                                 |
 :---------------------------------------------------------------:|:-----------------------------------------------------------------:|
-| ![Main workflow on main branch](https://imgur.com/nxl3M1m.png) | ![Main workflow on a pull request](https://imgur.com/bHBKnBs.png) |
+| ![Main workflow on main branch](https://imgur.com/8kfQ7yj.png) | ![Main workflow on a pull request](https://imgur.com/18msrSv.png) |
 
 ### Deployments
 #### The web app
@@ -143,12 +143,12 @@ Since `testing` job runs at each pull request or at each push on master, the job
 
 Here is how it looks like on CircleCI dashboard:
 
-| ![Junit Report](https://imgur.com/PCiJSIq.png) | ![Coverage](https://imgur.com/Y3fLEQG.png) |
+| ![Junit Report](https://imgur.com/wbzhUNM.png) | ![Coverage](https://imgur.com/BWasQlj.png) |
 :-----------------------------------------------:|:------------------------------------------:|
 
 For the `main` branch, the coverage reports will be deployed on [https://coverage.hn-implementation.surge.sh](https://coverage.hn-implementation.surge.sh) by the CI/CD.
 
-![Coverage](https://imgur.com/A78JGeP.png)
+![Coverage](https://imgur.com/NmA2Ivz.png)
 
 #### Storybook
 As mentioned in the Storybook section, the design system is deployed at [https://storybook.hn-implementation.surge.sh](https://storybook.hn-implementation.surge.sh).
@@ -158,7 +158,7 @@ We use [Sonarcloud](https://sonarcloud.io/documentation) to detect code quality 
 Visit the [public dashboard of the project](https://sonarcloud.io/dashboard?id=proustibat_hn-implementation).
 The CI/CD runs the sonar scanner on each push.
 
-![Sonarcloud job](https://imgur.com/kKaD17a.png)
+![Sonarcloud job](https://imgur.com/DWXfc8m.png)
 
 ## Learn More
 
