@@ -1,10 +1,16 @@
 import { storiesActionTypes as Actions } from '../actionsTypes';
 
-export const requestStories = () => ({
+export enum SearchKind {
+    TOP = 'top',
+    BEST = 'best',
+    NEW = 'new',
+};
+
+export const requestStories = (searchKind: SearchKind = SearchKind.TOP) => ({
   type: Actions.REQUEST_STORIES,
   payload: {
     request: {
-      url: '/newstories.json',
+      url: `/${searchKind}stories.json`,
     },
   },
 });
@@ -14,6 +20,7 @@ export const requestStory = (id: number) => ({
   payload: {
     request: {
       url: `/item/${id}.json`,
+      data: {id},
     },
   },
 });

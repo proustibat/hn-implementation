@@ -3,7 +3,7 @@
 ## Technical improvements
 
 ### Performances
-- Save stories in the reducer in an object more than in an array.
+- Save stories in the reducer in an object more than in an array because each time we update an item in the array, it re-render all the items!
 - Load stories details by lot (maybe add a kind of pagination system), **you can't request 500 endpoints at the same time in real life!**
 
 ### Errors management

@@ -1,5 +1,5 @@
-import React, {useEffect, useState} from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import React, { useCallback, useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 import {
@@ -53,16 +53,17 @@ export const Home = () => {
     ({ stories }: RootReducersType) => stories,
   );
   // const [extractStories, setExtractStories] = useState<StoryProps[]>([]);
+  const [isLoadingDetails, setIsLoadingDetails] = useState<boolean>(false);
 
   const allDetailsLoaded = useSelector(
     ({ stories: { items } }: RootReducersType) =>
       items.every(story => story.loaded),
   );
 
-  const isLoadingDetails = useSelector(
-    ({ stories: { items } }: RootReducersType) =>
-      items.some(story => story.loading),
-  );
+  // const oneOfThemIsLoading = useSelector(
+  //   ({ stories: { items } }: RootReducersType) =>
+  //     items.some(story => story.loading),
+  // );
 
   const renderLoading = () => (
     <>
@@ -84,44 +85,50 @@ export const Home = () => {
     score,
     loaded,
   }: StoryProps) => {
-    console.log('RENDER STORY');
     return (
       <Card className={classes.card} key={id}>
+        {!loaded && loading && <LinearProgress />}
         <CardContent>
-          <Typography
-            className={classes.type}
-            color="textSecondary"
-            gutterBottom
-          >
-            {type}
-          </Typography>
-          <Typography variant="h5" component="h2">
-            {title}
-          </Typography>
-          <Typography className={classes.score} color="textSecondary">
-            {score}
-          </Typography>
-          <Typography variant="body2" component="p">
-            {text}
-          </Typography>
+          {loaded && !loading && (
+            <>
+              <Typography
+                className={classes.type}
+                color="textSecondary"
+                gutterBottom
+              >
+                {type}
+              </Typography>
+              <Typography variant="h5" component="h2">
+                {title}
+              </Typography>
+              <Typography className={classes.score} color="textSecondary">
+                Score: {score}
+              </Typography>
+              <Typography variant="body2" component="p">
+                {text}
+              </Typography>
+            </>
+          )}
         </CardContent>
-        <CardActions>
-          <Button size="small">
-            <a rel="noreferrer" href={url} target="_blank">
+        {url && (
+          <CardActions>
+            <Button size="small" href={url}>
               Visit
-            </a>
-          </Button>
-        </CardActions>
+            </Button>
+          </CardActions>
+        )}
       </Card>
     );
   };
 
-  const fetchDetails = () => {
-    // TODO: create a pagination system
-    const extract = [...stories];
-    extract.length = 10;
-    Promise.all(extract.map(story => dispatch(requestStory(story.id))));
-  };
+  const fetchDetails = useCallback(async () => {
+    if (!isLoadingDetails && !allDetailsLoaded) {
+      setIsLoadingDetails(true);
+      const promises = stories.map(story => dispatch(requestStory(story.id)));
+      await Promise.all(promises);
+      setIsLoadingDetails(false);
+    }
+  }, [dispatch, stories, isLoadingDetails, allDetailsLoaded]);
 
   // When component is mounter, load the stories
   useEffect(() => {
@@ -131,7 +138,7 @@ export const Home = () => {
   // When all the stories are loaded, load details for each
   useEffect(() => {
     isLoadedStories && fetchDetails();
-  }, [isLoadedStories]);
+  }, [isLoadedStories, fetchDetails]);
 
   return (
     <>
@@ -146,7 +153,7 @@ export const Home = () => {
             <div>
               {isLoadingDetails && <p>Loading details for each stories...</p>}
               {allDetailsLoaded && <p>All details are loaded</p>}
-              {stories.length > 0 && stories.map(renderStory)}
+              {stories.length > 0 && stories.map(story => renderStory(story))}
             </div>
           )}
         </Box>
