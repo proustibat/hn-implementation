@@ -3,24 +3,74 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@testing-library/jest-dom": "^5.11.4",
-    "@testing-library/react": "^11.1.0",
-    "@testing-library/user-event": "^12.1.10",
-    "@types/jest": "^26.0.15",
-    "@types/node": "^12.0.0",
-    "@types/react": "^16.9.53",
-    "@types/react-dom": "^16.9.8",
-    "react": "^17.0.1",
-    "react-dom": "^17.0.1",
+    "@material-ui/core": "4.11.0",
+    "@material-ui/icons": "4.9.1",
+    "@material-ui/lab": "^4.0.0-alpha.56",
+    "axios": "0.21.0",
+    "fontsource-roboto": "3.0.3",
+    "husky": "4.3.0",
+    "i18next": "19.8.4",
+    "i18next-browser-languagedetector": "6.0.1",
+    "i18next-xhr-backend": "3.2.2",
+    "react": "17.0.1",
+    "react-dom": "17.0.1",
+    "react-i18next": "11.7.3",
+    "react-redux": "7.2.2",
+    "react-router-dom": "5.2.0",
     "react-scripts": "4.0.1",
-    "typescript": "^4.0.3",
-    "web-vitals": "^0.2.4"
+    "redux": "4.0.5",
+    "redux-devtools-extension": "2.13.8",
+    "redux-thunk": "2.3.0",
+    "typescript": "4.1.2",
+    "web-vitals": "1.0.1"
+  },
+  "devDependencies": {
+    "@harelpls/storybook-addon-materialui": "2.0.0",
+    "@storybook/addon-actions": "6.1.6",
+    "@storybook/addon-essentials": "6.1.6",
+    "@storybook/addon-links": "6.1.6",
+    "@storybook/node-logger": "6.1.6",
+    "@storybook/preset-create-react-app": "3.1.5",
+    "@storybook/react": "6.1.5",
+    "@testing-library/jest-dom": "5.11.6",
+    "@testing-library/react": "11.2.2",
+    "@testing-library/user-event": "12.2.2",
+    "@types/jest": "26.0.15",
+    "@types/node": "14.14.10",
+    "@types/react": "17.0.0",
+    "@types/react-dom": "17.0.0",
+    "@types/react-redux": "7.1.11",
+    "@types/react-router-dom": "5.1.6",
+    "cz-conventional-changelog": "3.3.0",
+    "husky": "4.3.0",
+    "jest-junit": "12.0.0",
+    "prettier": "2.2.0",
+    "prettier-eslint": "12.0.0",
+    "prettier-eslint-cli": "5.0.0",
+    "pretty-quick": "3.1.0",
+    "snapshot-diff": "0.8.1",
+    "storybook-addon-i18next": "1.3.0",
+    "surge": "0.21.7",
+    "ts-jest": "26.4.4"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "tdd": "react-scripts test",
+    "test": "CI=true react-scripts test --collectCoverage=true --reporters=default --reporters=jest-junit",
+    "eject": "react-scripts eject",
+    "lint": "prettier -w \"./**/*.{js,ts,tsx,json}\"",
+    "predeploy": "mv build/index.html build/200.html",
+    "deploy": "surge --project ./build",
+    "postdeploy": "mv build/200.html build/index.html",
+    "predeploy:coverage": "mv coverage/lcov-report/index.html coverage/lcov-report/200.html",
+    "deploy:coverage": "surge --project ./coverage/lcov-report",
+    "postdeploy:coverage": "mv coverage/lcov-report/200.html coverage/lcov-report/index.html",
+    "storybook": "start-storybook -p 6006 -s public",
+    "build-storybook": "build-storybook -s public",
+    "predeploy:storybook": "mv storybook-static/index.html storybook-static/200.html",
+    "deploy:storybook": "surge --project ./storybook-static",
+    "postdeploy:storybook": "mv storybook-static/200.html storybook-static/index.html"
   },
   "eslintConfig": {
     "extends": [
@@ -38,6 +88,29 @@
       "last 1 chrome version",
       "last 1 firefox version",
       "last 1 safari version"
+    ]
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  },
+  "husky": {
+    "hooks": {
+      "prepare-commit-msg": "exec < /dev/tty && git cz --hook || true"
+    }
+  },
+  "jest": {
+    "clearMocks": true,
+    "collectCoverageFrom": [
+      "./**/*.{ts,tsx,js}",
+      "!./**/*.stories.{tsx,ts}",
+      "!./src/stories/**/*.tsx",
+      "!./src/index.tsx",
+      "!./src/react-app-env.d.ts",
+      "!./src/reportWebVitals.ts",
+      "!./src/setupTests.ts",
+      "!./src/__mocks__/**/*"
     ]
   }
 }

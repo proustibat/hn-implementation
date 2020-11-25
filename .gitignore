@@ -21,3 +21,9 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+.eslintcache
+.idea
+hn-implementation.iml
+junit.xml
+storybook-static

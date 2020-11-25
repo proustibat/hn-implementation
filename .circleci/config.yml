@@ -1,0 +1,142 @@
+version: 2.1
+orbs:
+  node: circleci/node@4.1.0
+  sonarcloud: sonarsource/sonarcloud@1.0.2
+executors:
+  docker-node:
+    docker:
+      - image: circleci/node:14.15.1
+workflows:
+  main:
+    jobs:
+      - prepare
+      - unit-testing:
+          requires:
+            - prepare
+      - build-app:
+          requires:
+            - prepare
+      - build-storybook:
+          requires:
+            - prepare
+      - deployments:
+          requires:
+            - unit-testing
+            - build-app
+            - build-storybook
+          filters:
+            branches:
+              only:
+                - main
+      - sonar:
+          requires:
+            - unit-testing
+          context: SonarCloud
+jobs:
+  prepare:
+    executor: docker-node
+    working_directory: ~/repo
+    description: "Download and cache dependencies"
+    steps:
+      - checkout
+      - restore_cache:
+          name: Restore Yarn Package Cache
+          keys:
+            - yarn-packages-{{ checksum "yarn.lock" }}
+      - run:
+          name: Install Dependencies
+          command: yarn install
+      - save_cache:
+          name: Save Yarn Package Cache
+          paths:
+            - node_modules
+            - ~/.cache/yarn
+          key: yarn-packages-{{ checksum "yarn.lock" }}
+      - persist_to_workspace:
+          root: ~/repo
+          paths:
+            - node_modules
+  unit-testing:
+    executor: docker-node
+    working_directory: ~/repo
+    description: "Run unit tests and collect coverage reports"
+    steps:
+      - checkout
+      - attach_workspace:
+          at: ~/repo
+      - run:
+          name: "Unit tests and coverage"
+          command: yarn test
+          environment:
+            JEST_JUNIT_OUTPUT_DIR: "reports/junit/junit.xml"
+      - store_test_results:
+          path: reports/junit
+      - store_artifacts:
+          name: "Store tests report"
+          path: reports/junit
+      - store_artifacts:
+          name: "Store coverage report"
+          path: coverage
+      - persist_to_workspace:
+          root: ~/repo
+          paths:
+            - coverage
+            - reports
+  build-app:
+    executor: docker-node
+    working_directory: ~/repo
+    description: "Build the web app"
+    steps:
+      - checkout
+      - attach_workspace:
+          at: ~/repo
+      - run:
+          name: "Build the web app"
+          command: yarn build
+      - persist_to_workspace:
+          root: ~/repo
+          paths:
+            - build
+  build-storybook:
+    executor: docker-node
+    working_directory: ~/repo
+    description: "Build, save artifacts and eventually deploy the Storybook"
+    steps:
+      - checkout
+      - attach_workspace:
+          at: ~/repo
+      - run:
+          name: "Build the storybook"
+          command: yarn build-storybook
+      - store_artifacts:
+          name: "Save build storybook"
+          path: storybook-static
+      - persist_to_workspace:
+          root: ~/repo
+          paths:
+            - storybook-static
+  deployments:
+    executor: docker-node
+    working_directory: ~/repo
+    description: "Deploy built web app with Surge"
+    steps:
+      - checkout
+      - attach_workspace:
+          at: ~/repo
+      - run:
+          name: "Deploy built web app with Surge"
+          command: yarn deploy --domain https://hn-implementation.surge.sh
+      - run:
+          name: "Deploy jest coverage artifacts"
+          command: yarn deploy:coverage --domain https://coverage.hn-implementation.surge.sh
+      - run:
+          name: "Deploy storybook"
+          command: yarn deploy:storybook --domain https://storybook.hn-implementation.surge.sh
+  sonar:
+    executor: docker-node
+    working_directory: ~/repo
+    steps:
+      - checkout
+      - attach_workspace:
+          at: ~/repo
+      - sonarcloud/scan
