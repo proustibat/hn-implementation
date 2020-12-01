@@ -30,4 +30,5 @@ const makeStyles = (style: unknown) => (props: unknown) => {
 
   return classesToString;
 };
+
 module.exports = { ...MUIStyles, makeStyles };

@@ -10,7 +10,7 @@ import {
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 import { useTranslation } from 'react-i18next';
 import { StoryProps } from '../../state/reducers/storiesReducer';
-import ChipKind from './ChipStoryType';
+import ChipStoryType from './ChipStoryType';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -19,13 +19,17 @@ const useStyles = makeStyles((theme: Theme) =>
       paddingBottom: theme.typography.pxToRem(4),
       marginBottom: theme.typography.pxToRem(12),
     },
+    rootNoLoaded: {
+      padding: 0,
+      margin: 0,
+    },
     score: {
       marginBottom: theme.typography.pxToRem(12),
     },
   }),
 );
 
-const StoryCard = ({
+export const StoryCard = ({
   id,
   loading,
   title,
@@ -39,45 +43,47 @@ const StoryCard = ({
   const { t } = useTranslation();
 
   return (
-    <Card className={classes.root} key={id}>
+    <Card className={loaded ? classes.root : classes.rootNoLoaded} key={id}>
       {loading && <LinearProgress />}
-      <CardContent>
-        {loaded && !loading && (
-          <>
-            {type && <ChipKind type={type} />}
+      {loaded && !loading && (
+        <>
+          <CardContent>
+            <>
+              {type && <ChipStoryType type={type} />}
 
-            {title && (
-              <Typography variant="h5" component="h2">
-                {title}
-              </Typography>
-            )}
+              {title && (
+                <Typography variant="h5" component="h2">
+                  {title}
+                </Typography>
+              )}
 
-            {score && (
-              <Typography className={classes.score} color="textSecondary">
-                {t('score')}: {score}
-              </Typography>
-            )}
+              {score && (
+                <Typography className={classes.score} color="textSecondary">
+                  {t('score')}: {score}
+                </Typography>
+              )}
 
-            {text && (
-              <Typography variant="body2" component="p">
-                {text}
-              </Typography>
-            )}
-          </>
-        )}
-      </CardContent>
-      {url && (
-        <CardActions>
-          <Button
-            target="_blank"
-            size="small"
-            href={url}
-            variant="contained"
-            color="primary"
-          >
-            {t('visit')}
-          </Button>
-        </CardActions>
+              {text && (
+                <Typography variant="body2" component="p">
+                  {text}
+                </Typography>
+              )}
+            </>
+          </CardContent>
+          {url && (
+            <CardActions>
+              <Button
+                target="_blank"
+                size="small"
+                href={url}
+                variant="contained"
+                color="primary"
+              >
+                {t('visit')}
+              </Button>
+            </CardActions>
+          )}
+        </>
       )}
     </Card>
   );

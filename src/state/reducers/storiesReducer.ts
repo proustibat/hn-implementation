@@ -1,8 +1,4 @@
-import {
-  storiesActionTypes as Actions,
-  SUFFIX_FAILURE,
-  SUFFIX_SUCCESS,
-} from '../actionsTypes';
+import { storiesActionTypes as Actions } from '../actionsTypes';
 import { AxiosResponse } from 'axios';
 
 export enum StoryKindType {
@@ -39,19 +35,19 @@ export type StoriesReducerType = {
   loaded: boolean;
 };
 
-const initialState: StoriesReducerType = {
+export const initialState: StoriesReducerType = {
   items: [],
   loading: false,
   loaded: false,
 };
 
-const LIMIT = 25;
+const LIMIT = 10;
 
 const storiesReducer = (
   state = initialState,
   action: {
     type: Actions;
-    payload: { data?: unknown; request?: AxiosResponse };
+    payload?: { data?: unknown; request?: AxiosResponse };
   },
 ) => {
   let loadedItemId: number;
@@ -62,13 +58,13 @@ const storiesReducer = (
         loading: true,
         loaded: false,
       };
-    case `${Actions.REQUEST_STORIES}${SUFFIX_FAILURE}`:
+    case Actions.REQUEST_STORIES_FAILURE:
       return {
         ...state,
         loading: false,
         loaded: false,
       };
-    case `${Actions.REQUEST_STORIES}${SUFFIX_SUCCESS}`:
+    case Actions.REQUEST_STORIES_SUCCESS:
       return {
         ...state,
         // slice temp while we don't manage queue or pagination
@@ -94,7 +90,7 @@ const storiesReducer = (
             : item;
         }),
       };
-    case `${Actions.REQUEST_STORY}${SUFFIX_FAILURE}`:
+    case Actions.REQUEST_STORY_FAILURE:
       loadedItemId = action.payload?.request?.data?.id as number;
       return {
         ...state,
@@ -108,12 +104,12 @@ const storiesReducer = (
             : item;
         }),
       };
-    case `${Actions.REQUEST_STORY}${SUFFIX_SUCCESS}`:
-      const loadedItem = action.payload.data as StoryProps;
+    case Actions.REQUEST_STORY_SUCCESS:
+      const loadedItem = action.payload?.data as StoryProps;
       return {
         ...state,
         items: state.items.map(item => {
-          return item.id === loadedItem.id
+          return loadedItem && item.id === loadedItem.id
             ? {
                 ...item,
                 ...loadedItem,
