@@ -128,10 +128,10 @@ jobs:
           command: yarn deploy --domain https://hn-implementation.surge.sh
       - run:
           name: "Deploy jest coverage artifacts"
-          command: yarn deploy:coverage --domain https://coverage.hn-implementation.surge.sh
+          command: yarn deploy:coverage --domain https://coverage-hn-implementation.surge.sh
       - run:
           name: "Deploy storybook"
-          command: yarn deploy:storybook --domain https://storybook.hn-implementation.surge.sh
+          command: yarn deploy:storybook --domain https://storybook-hn-implementation.surge.sh
   sonar:
     executor: docker-node
     working_directory: ~/repo

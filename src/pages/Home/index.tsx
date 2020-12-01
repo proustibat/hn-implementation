@@ -1,8 +1,15 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
-import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
-import { Box, Container, LinearProgress, Typography } from '@material-ui/core';
+import {
+  Box,
+  Container,
+  LinearProgress,
+  Typography,
+  createStyles,
+  makeStyles,
+  Theme,
+} from '@material-ui/core';
 import {
   requestStories,
   requestStory,
@@ -50,7 +57,7 @@ export const Home = () => {
     }
   }, [dispatch, stories, isLoadingDetails, allDetailsLoaded]);
 
-  // When component is mounter, load the stories
+  // When component is mounted, load the stories
   useEffect(() => {
     dispatch(requestStories());
   }, [dispatch]);
@@ -72,7 +79,10 @@ export const Home = () => {
           ) : (
             <div>
               {isLoadingDetails && <p>Loading details for each stories...</p>}
-              {allDetailsLoaded && <p>All details are loaded</p>}
+              {allDetailsLoaded && stories.length === 0
+                ? t('no-content')
+                : allDetailsLoaded && <p>All details are loaded</p>}
+
               {stories.length > 0 &&
                 stories.map(story => <StoryCard key={story.id} {...story} />)}
             </div>

@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Stories Reducer should save stories and set loading and loaded booleans when requesting stories with success 1`] = `
+Object {
+  "items": Array [],
+  "loaded": true,
+  "loading": false,
+}
+`;

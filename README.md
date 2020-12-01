@@ -15,8 +15,8 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## DEMO
 [![Live Demo Web App](https://img.shields.io/badge/Live%20Demo-%20Web%20App-brightgreen.svg)](https://hn-implementation.surge.sh)
-[![Live Demo Storybook](https://img.shields.io/badge/Live%20Demo-%20Storybook-FF4785.svg)](https://storybook.hn-implementation.surge.sh)
-[![Live Demo Coverage Report](https://img.shields.io/badge/Live%20Demo-%20Coverage-FFAE00.svg)](https://coverage.hn-implementation.surge.sh)
+[![Live Demo Storybook](https://img.shields.io/badge/Live%20Demo-%20Storybook-FF4785.svg)](https://storybook-hn-implementation.surge.sh)
+[![Live Demo Coverage Report](https://img.shields.io/badge/Live%20Demo-%20Coverage-FFAE00.svg)](https://coverage-hn-implementation.surge.sh)
 
 ## REQUIREMENTS
 Be sure [Node](https://nodejs.org/) and [NPM](https://www.npmjs.com/) are installed.
@@ -92,7 +92,7 @@ You can write any stories file you want by writing them in a file with the `.sto
 ### Build and deploy the Storybook app
 `yarn build-storybook` create a minified app ready to be deployed in `storybook-static` directory.
 
-Our CI/CD run the build then deploy its content during the `deployments` job for the `main` branch on [https://storybook.hn-implementation.surge.sh](https://storybook.hn-implementation.surge.sh).
+Our CI/CD run the build then deploy its content during the `deployments` job for the `main` branch on [https://storybook-hn-implementation.surge.sh](https://storybook-hn-implementation.surge.sh).
 For other branches or pull requests, built storybook is in artifacts.
 
 ## PRODUCTION
@@ -146,12 +146,12 @@ Here is how it looks like on CircleCI dashboard:
 | ![Junit Report](https://imgur.com/wbzhUNM.png) | ![Coverage](https://imgur.com/BWasQlj.png) |
 :-----------------------------------------------:|:------------------------------------------:|
 
-For the `main` branch, the coverage reports will be deployed on [https://coverage.hn-implementation.surge.sh](https://coverage.hn-implementation.surge.sh) by the CI/CD.
+For the `main` branch, the coverage reports will be deployed on [https://coverage-hn-implementation.surge.sh](https://coverage-hn-implementation.surge.sh) by the CI/CD.
 
 ![Coverage](https://imgur.com/NmA2Ivz.png)
 
 #### Storybook
-As mentioned in the Storybook section, the design system is deployed at [https://storybook.hn-implementation.surge.sh](https://storybook.hn-implementation.surge.sh).
+As mentioned in the Storybook section, the design system is deployed at [https://storybook-hn-implementation.surge.sh](https://storybook-hn-implementation.surge.sh).
 
 ### Code quality tracking
 We use [Sonarcloud](https://sonarcloud.io/documentation) to detect code quality issues, the maintainability, reliability and security of the code.
@@ -176,3 +176,7 @@ To learn React, check out the [React documentation](https://reactjs.org/).
 - [Storybook](https://storybook.js.org/)
 - [react-i18next](https://react.i18next.com/)
 - [i18next-browser-languagedetector](https://github.com/i18next/i18next-browser-languageDetector)
+- [Redux](https://redux.js.org/) using [React-Redux](https://react-redux.js.org/)
+- [Axios](https://github.com/axios/axios)
+- [redux-axios-middleware](https://github.com/svrcekmichal/redux-axios-middleware)
+- [Mocki.io](https://mocki.io/)

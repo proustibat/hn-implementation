@@ -1,0 +1,374 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Home view given the store has all stories and every story are loaded should render the view correctly by default 1`] = `
+<div>
+  <div
+    class="MuiContainer-root root_paddingTop-24 root_paddingBottom-96 MuiContainer-maxWidthSm"
+  >
+    <h1
+      class="MuiTypography-root MuiTypography-h3"
+    >
+      home-title
+    </h1>
+    <div
+      class="MuiBox-root MuiBox-root-1"
+    >
+      <div>
+        <p>
+          All details are loaded
+        </p>
+        <div
+          class="MuiPaper-root MuiCard-root root_minWidth-275 root_paddingBottom-0.25rem root_marginBottom-0.75rem MuiPaper-elevation1 MuiPaper-rounded"
+        >
+          <div
+            class="MuiCardContent-root"
+          >
+            <div
+              class="MuiChip-root root_color-#fff root_borderColor-#fff MuiChip-outlined MuiChip-sizeSmall"
+            >
+              <svg
+                aria-hidden="true"
+                class="MuiSvgIcon-root MuiChip-icon root_color-#fff root_borderColor-#fff MuiChip-iconSmall"
+                focusable="false"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M14 17H4v2h10v-2zm6-8H4v2h16V9zM4 15h16v-2H4v2zM4 5v2h16V5H4z"
+                />
+              </svg>
+              <span
+                class="MuiChip-label MuiChip-labelSmall"
+              >
+                story
+              </span>
+            </div>
+            <h2
+              class="MuiTypography-root MuiTypography-h5"
+            >
+              title 1
+            </h2>
+            <p
+              class="MuiTypography-root score_marginBottom-0.75rem MuiTypography-body1 MuiTypography-colorTextSecondary"
+            >
+              score
+              : 
+              123
+            </p>
+          </div>
+          <div
+            class="MuiCardActions-root MuiCardActions-spacing"
+          >
+            <a
+              aria-disabled="false"
+              class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-containedSizeSmall MuiButton-sizeSmall"
+              href="https://www.werkspot.nl"
+              tabindex="0"
+              target="_blank"
+            >
+              <span
+                class="MuiButton-label"
+              >
+                visit
+              </span>
+              <span
+                class="MuiTouchRipple-root"
+              />
+            </a>
+          </div>
+        </div>
+        <div
+          class="MuiPaper-root MuiCard-root root_minWidth-275 root_paddingBottom-0.25rem root_marginBottom-0.75rem MuiPaper-elevation1 MuiPaper-rounded"
+        >
+          <div
+            class="MuiCardContent-root"
+          >
+            <div
+              class="MuiChip-root root_color-#fff root_borderColor-#fff MuiChip-outlined MuiChip-sizeSmall"
+            >
+              <svg
+                aria-hidden="true"
+                class="MuiSvgIcon-root MuiChip-icon root_color-#fff root_borderColor-#fff MuiChip-iconSmall"
+                focusable="false"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M14 17H4v2h10v-2zm6-8H4v2h16V9zM4 15h16v-2H4v2zM4 5v2h16V5H4z"
+                />
+              </svg>
+              <span
+                class="MuiChip-label MuiChip-labelSmall"
+              >
+                story
+              </span>
+            </div>
+            <h2
+              class="MuiTypography-root MuiTypography-h5"
+            >
+              title 2
+            </h2>
+            <p
+              class="MuiTypography-root score_marginBottom-0.75rem MuiTypography-body1 MuiTypography-colorTextSecondary"
+            >
+              score
+              : 
+              456
+            </p>
+          </div>
+          <div
+            class="MuiCardActions-root MuiCardActions-spacing"
+          >
+            <a
+              aria-disabled="false"
+              class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-containedSizeSmall MuiButton-sizeSmall"
+              href="https://www.github.com"
+              tabindex="0"
+              target="_blank"
+            >
+              <span
+                class="MuiButton-label"
+              >
+                visit
+              </span>
+              <span
+                class="MuiTouchRipple-root"
+              />
+            </a>
+          </div>
+        </div>
+        <div
+          class="MuiPaper-root MuiCard-root root_minWidth-275 root_paddingBottom-0.25rem root_marginBottom-0.75rem MuiPaper-elevation1 MuiPaper-rounded"
+        >
+          <div
+            class="MuiCardContent-root"
+          >
+            <div
+              class="MuiChip-root root_color-#fff root_borderColor-#fff MuiChip-outlined MuiChip-sizeSmall"
+            >
+              <svg
+                aria-hidden="true"
+                class="MuiSvgIcon-root MuiChip-icon root_color-#fff root_borderColor-#fff MuiChip-iconSmall"
+                focusable="false"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M14 17H4v2h10v-2zm6-8H4v2h16V9zM4 15h16v-2H4v2zM4 5v2h16V5H4z"
+                />
+              </svg>
+              <span
+                class="MuiChip-label MuiChip-labelSmall"
+              >
+                story
+              </span>
+            </div>
+            <h2
+              class="MuiTypography-root MuiTypography-h5"
+            >
+              title 3
+            </h2>
+            <p
+              class="MuiTypography-root score_marginBottom-0.75rem MuiTypography-body1 MuiTypography-colorTextSecondary"
+            >
+              score
+              : 
+              789
+            </p>
+            <p
+              class="MuiTypography-root MuiTypography-body2"
+            >
+              bla bli blou
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Home view given the store has all stories and one is loading should render the view correctly by default 1`] = `
+<div>
+  <div
+    class="MuiContainer-root root_paddingTop-24 root_paddingBottom-96 MuiContainer-maxWidthSm"
+  >
+    <h1
+      class="MuiTypography-root MuiTypography-h3"
+    >
+      home-title
+    </h1>
+    <div
+      class="MuiBox-root MuiBox-root-2"
+    >
+      <div>
+        <div
+          class="MuiPaper-root MuiCard-root root_minWidth-275 root_paddingBottom-0.25rem root_marginBottom-0.75rem MuiPaper-elevation1 MuiPaper-rounded"
+        >
+          <div
+            class="MuiCardContent-root"
+          >
+            <div
+              class="MuiChip-root root_color-#fff root_borderColor-#fff MuiChip-outlined MuiChip-sizeSmall"
+            >
+              <svg
+                aria-hidden="true"
+                class="MuiSvgIcon-root MuiChip-icon root_color-#fff root_borderColor-#fff MuiChip-iconSmall"
+                focusable="false"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M14 17H4v2h10v-2zm6-8H4v2h16V9zM4 15h16v-2H4v2zM4 5v2h16V5H4z"
+                />
+              </svg>
+              <span
+                class="MuiChip-label MuiChip-labelSmall"
+              >
+                story
+              </span>
+            </div>
+            <h2
+              class="MuiTypography-root MuiTypography-h5"
+            >
+              title 1
+            </h2>
+            <p
+              class="MuiTypography-root score_marginBottom-0.75rem MuiTypography-body1 MuiTypography-colorTextSecondary"
+            >
+              score
+              : 
+              123
+            </p>
+          </div>
+          <div
+            class="MuiCardActions-root MuiCardActions-spacing"
+          >
+            <a
+              aria-disabled="false"
+              class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-containedSizeSmall MuiButton-sizeSmall"
+              href="https://www.werkspot.nl"
+              tabindex="0"
+              target="_blank"
+            >
+              <span
+                class="MuiButton-label"
+              >
+                visit
+              </span>
+              <span
+                class="MuiTouchRipple-root"
+              />
+            </a>
+          </div>
+        </div>
+        <div
+          class="MuiPaper-root MuiCard-root rootNoLoaded_padding-0 rootNoLoaded_margin-0 MuiPaper-elevation1 MuiPaper-rounded"
+        >
+          <div
+            class="MuiLinearProgress-root MuiLinearProgress-colorPrimary MuiLinearProgress-indeterminate"
+            role="progressbar"
+          >
+            <div
+              class="MuiLinearProgress-bar MuiLinearProgress-barColorPrimary MuiLinearProgress-bar1Indeterminate"
+            />
+            <div
+              class="MuiLinearProgress-bar MuiLinearProgress-bar2Indeterminate MuiLinearProgress-barColorPrimary"
+            />
+          </div>
+        </div>
+        <div
+          class="MuiPaper-root MuiCard-root root_minWidth-275 root_paddingBottom-0.25rem root_marginBottom-0.75rem MuiPaper-elevation1 MuiPaper-rounded"
+        >
+          <div
+            class="MuiCardContent-root"
+          >
+            <div
+              class="MuiChip-root root_color-#fff root_borderColor-#fff MuiChip-outlined MuiChip-sizeSmall"
+            >
+              <svg
+                aria-hidden="true"
+                class="MuiSvgIcon-root MuiChip-icon root_color-#fff root_borderColor-#fff MuiChip-iconSmall"
+                focusable="false"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M14 17H4v2h10v-2zm6-8H4v2h16V9zM4 15h16v-2H4v2zM4 5v2h16V5H4z"
+                />
+              </svg>
+              <span
+                class="MuiChip-label MuiChip-labelSmall"
+              >
+                story
+              </span>
+            </div>
+            <h2
+              class="MuiTypography-root MuiTypography-h5"
+            >
+              title 3
+            </h2>
+            <p
+              class="MuiTypography-root score_marginBottom-0.75rem MuiTypography-body1 MuiTypography-colorTextSecondary"
+            >
+              score
+              : 
+              789
+            </p>
+            <p
+              class="MuiTypography-root MuiTypography-body2"
+            >
+              bla bli blou
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Home view given the store has not any stories should render the view correctly by default 1`] = `
+<div>
+  <div
+    class="MuiContainer-root root_paddingTop-24 root_paddingBottom-96 MuiContainer-maxWidthSm"
+  >
+    <h1
+      class="MuiTypography-root MuiTypography-h3"
+    >
+      home-title
+    </h1>
+    <div
+      class="MuiBox-root MuiBox-root-3"
+    >
+      <div>
+        no-content
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Home view given the store is loading stories should render the view correctly by default 1`] = `
+<div>
+  <div
+    class="MuiContainer-root root_paddingTop-24 root_paddingBottom-96 MuiContainer-maxWidthSm"
+  >
+    <h1
+      class="MuiTypography-root MuiTypography-h3"
+    >
+      home-title
+    </h1>
+    <div
+      class="MuiBox-root MuiBox-root-4"
+    >
+      <div
+        class="MuiLinearProgress-root MuiLinearProgress-colorPrimary MuiLinearProgress-indeterminate"
+        role="progressbar"
+      >
+        <div
+          class="MuiLinearProgress-bar MuiLinearProgress-barColorPrimary MuiLinearProgress-bar1Indeterminate"
+        />
+        <div
+          class="MuiLinearProgress-bar MuiLinearProgress-bar2Indeterminate MuiLinearProgress-barColorPrimary"
+        />
+      </div>
+    </div>
+  </div>
+</div>
+`;
