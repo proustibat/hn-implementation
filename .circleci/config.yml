@@ -5,7 +5,7 @@ orbs:
 executors:
   docker-node:
     docker:
-      - image: circleci/node:14.15.1
+      - image: circleci/node:14.16.1
 workflows:
   main:
     jobs:
