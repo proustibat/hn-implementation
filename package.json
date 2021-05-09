@@ -22,7 +22,7 @@
     "redux-devtools-extension": "2.13.8",
     "redux-thunk": "2.3.0",
     "typescript": "4.1.2",
-    "web-vitals": "1.0.1"
+    "web-vitals": "1.1.2"
   },
   "devDependencies": {
     "@harelpls/storybook-addon-materialui": "2.0.0",
